@@ -166,6 +166,42 @@ initializr:
     platform:
       compatibilityRange: "3.3.0"
   dependencies:
+    - name: Devin Catuns Starters
+      content:
+        - name: Auth (Spring Security)
+          id: dc-auth
+          description: JWT, Role-based authentication
+          groupId: xyz.catuns
+          artifact-id: auth-spring-boot-starter
+          version: 0.0.1-SNAPSHOT
+          starter: true
+          links:
+            - rel: reference
+              href: https://catuns.xyz
+#              href: https://docs.catuns.xyz/spring-boot/starters/auth
+    - name: More
+      content:
+        - name: Spring Doc OpenAPI
+          id: springdoc-openapi
+          description: Automate the generation of API documentation using spring boot projects
+          group-id: org.springdoc
+          artifact-id: springdoc-openapi-starter-webmvc-ui
+          starter: false
+          links:
+            - rel: reference
+              href: https://springdoc.org/#getting-started
+        - name: Mapstruct
+          id: mapstruct
+          description: Java bean mappings, the easy way!
+          group-id: org.mapstruct
+          artifact-id: mapstruct
+          version: 1.5.5.Final
+          starter: false
+          links:
+            - rel: reference
+              href: https://mapstruct.org/
+            - rel: guide
+              href: https://github.com/mapstruct/mapstruct-examples
     - name: Developer Tools
       content:
         - name: GraalVM Native Support
@@ -1085,6 +1121,16 @@ initializr:
           links:
             - rel: reference
               href: https://java.testcontainers.org/
+        - name: RestAssured
+          id: rest-assured
+          description: TestAssured for testing REST APIs
+          groupId: io.rest-assured
+          artifactId: rest-assured
+          scope: test
+          starter: false
+          links:
+            - rel: reference
+              href: https://rest-assured.io/
         - name: Contract Verifier
           bom: spring-cloud
           compatibilityRange: "[3.3.0,3.6.0-M1)"
