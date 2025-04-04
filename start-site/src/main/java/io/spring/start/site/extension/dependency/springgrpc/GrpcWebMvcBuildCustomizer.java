@@ -14,27 +14,29 @@
  * limitations under the License.
  */
 
-package io.spring.start.site.extension.dependency.graphql;
+package io.spring.start.site.extension.dependency.springgrpc;
 
 import io.spring.initializr.generator.buildsystem.Build;
 import io.spring.initializr.generator.buildsystem.Dependency;
-import io.spring.initializr.generator.buildsystem.DependencyScope;
 import io.spring.initializr.generator.spring.build.BuildCustomizer;
 
 /**
- * A {@link BuildCustomizer} that automatically adds "spring-graphql-test" when the
- * {@code graphql} dependency.
+ * {@link BuildCustomizer} to replace 'spring-grpc-spring-boot-starter' with
+ * 'spring-grpc-server-web-spring-boot-starter' if WebMVC is selected.
  *
- * @author Brian Clozel
  * @author Moritz Halbritter
  */
-class SpringGraphQlBuildCustomizer implements BuildCustomizer<Build> {
+class GrpcWebMvcBuildCustomizer implements BuildCustomizer<Build> {
+
+	private static final String DEPENDENCY_ID = "spring-grpc";
 
 	@Override
 	public void customize(Build build) {
+		Dependency dependency = build.dependencies().get(DEPENDENCY_ID);
+		build.dependencies().remove(DEPENDENCY_ID);
 		build.dependencies()
-			.add("spring-graphql-test", Dependency.withCoordinates("org.springframework.graphql", "spring-graphql-test")
-				.scope(DependencyScope.TEST_COMPILE));
+			.add(DEPENDENCY_ID, dependency.getGroupId(), "spring-grpc-server-web-spring-boot-starter",
+					dependency.getScope());
 	}
 
 }
